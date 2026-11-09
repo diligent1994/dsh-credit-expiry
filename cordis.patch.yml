@@ -1,0 +1,10 @@
+# dsh-credit-expiry bundle patch
+#
+# Standalone client-only plugin. Inserts the host-side row so the package is
+# loaded; the browser half ships through exports["./client"] and is served by
+# the host based on the `dsh.client` declaration in package.json. The Node
+# half (lib/index.js) keeps an empty `apply()` exactly like
+# @deepseek-ai/dsh-cordis-client-runner: nothing host-side happens here.
+- insert:
+    - id: credit-expiry
+      name: 'dsh-credit-expiry'

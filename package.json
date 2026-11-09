@@ -1,0 +1,64 @@
+{
+  "name": "dsh-credit-expiry",
+  "version": "0.1.0",
+  "description": "Standalone dsh client plugin: shows which channel credits expire in the next 7 days, grouped by day and per channel. Reads dsh-xdpool's own /status and /api/channel-pack data — it does not modify dsh-xdpool and survives xdpool upgrades.",
+  "type": "module",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "icon.svg"
+  ],
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ],
+      "platform": "web"
+    },
+    "manifestVersion": 1
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1-rc.1",
+    "@deepseek-ai/dsh-client-locale": ">=0.1.1-rc.1 <0.3.0",
+    "@deepseek-ai/dsh-client-ui-slots": ">=0.1.1-rc.1 <0.3.0",
+    "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.1-rc.1 <0.3.0",
+    "dsh-xdpool": ">=2.6.1 <3.0.0",
+    "react": ">=18.0.0"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "credit",
+    "expiry",
+    "channel",
+    "dashboard"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<owner>/dsh-credit-expiry.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "dsh": ">=0.2.0-rc.0 <0.3.0"
+  }
+}
